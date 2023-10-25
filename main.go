@@ -52,8 +52,6 @@ func crawler(wg *sync.WaitGroup, urls chan string, doneUrls chan string) {
 	}
 }
 
-var count int64
-
 func main() {
 	initial := []string{"https://golang.org", "http://cnn.com", "https://yahoo.com"}
 	init := "https://stackoverflow.com"
