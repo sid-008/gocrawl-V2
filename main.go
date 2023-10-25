@@ -28,7 +28,6 @@ func crawler(wg *sync.WaitGroup, urls chan string, doneUrls chan string) {
 		err := c.Visit(e.Request.AbsoluteURL(link))
 		if err != nil {
 			fmt.Println("skipped.")
-			count++
 		}
 	})
 
@@ -42,8 +41,6 @@ func crawler(wg *sync.WaitGroup, urls chan string, doneUrls chan string) {
 
 	c.OnRequest(func(r *colly.Request) {
 		fmt.Println("Crawled:", r.URL.String())
-		count++
-		fmt.Println("counter:", count)
 	})
 
 	err = c.Visit(<-urls)
